@@ -1,2 +1,2 @@
-# Pyhon_Goolge_v2
+# Python_Goolge_v2
 My first repository on Github 😄
