@@ -5,8 +5,12 @@
     <body>
         <nav>
             <div>
-                <a href="#">Location</a>
-                <a href="#">Company</a>
+                {% if request.user.is_authenticated %}             <!--ca sa imi apara Location si Company doar daca suntem logati-->
+                    <a href="{% url 'aplicatie1:listare' %">Location</a>
+                    <a href="#">Company</a>
+                    <a href="{% url 'logout' %}">Logout</a>
+                {% endif %}
+                <br><br>
             </div>
         </nav>
         <div>
