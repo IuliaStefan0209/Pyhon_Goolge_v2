@@ -37,8 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'aplicatie1',        #cu orice app lucram, tb sa o trecem in INSTALLED APPS
+    'aplicatie1',
     'aplicatie2',
+    'myapi',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -65,6 +67,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'proiect.context_processors.is_ready_to_work'
             ],
         },
     },
@@ -112,7 +115,9 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_TZ = True
+USE_L10N = True
+
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
@@ -128,4 +133,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = '/location/'
 LOGOUT_REDIRECT_URL = '/'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'       #trimitem linkul de resetare direct in terminal (pycharm)
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'           #trimitem linkul de resetare direct in terminal
