@@ -1,6 +1,6 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 
-# Create your views here.
 #CreateView => adaugare date in formular
 #UpdateView => modificare date in formular
 #DeleteView => stergere date din DB
@@ -12,7 +12,7 @@ from django.views.generic import CreateView, UpdateView, ListView
 from aplicatie1.models import Location
 
 
-class CreateLocationView(CreateView):
+class CreateLocationView(LoginRequiredMixin, CreateView):
     model = Location
     #fields = '__all__'     pt a le vedea pe toate
     fields = ['city', 'country']
@@ -21,7 +21,8 @@ class CreateLocationView(CreateView):
     def get_success_url(self):
         return reverse('aplicatie1:listare')
 
-class UpdateLocationView(UpdateView):
+
+class UpdateLocationView(LoginRequiredMixin, UpdateView):
     model = Location
     fields = ['city', 'country']
     template_name = 'aplicatie1/location_form.html'
@@ -30,7 +31,7 @@ class UpdateLocationView(UpdateView):
         return reverse('aplicatie1:listare')
 
 
-class ListLocationView(ListView):
+class ListLocationView(LoginRequiredMixin, ListView):
     model = Location
     template_name = 'aplicatie1/location_index.html'
 
