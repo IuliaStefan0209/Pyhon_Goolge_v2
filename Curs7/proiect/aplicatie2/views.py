@@ -29,9 +29,10 @@ class ListCompaniesView(LoginRequiredMixin, ListView):
     model = Companies
     template_name = 'aplicatie2/companies_index.html'
 
+
     def get_queryset(self):
-        if self.request.user.is_superuser is True:
-            return self.model.objects.all()
+        if self.request.user.is_superuser is True:           #daca utiliz logat e superuser
+            return self.model.objects.all()                  #self.model este companies(variabila model a clasei)
         return self.model.objects.filter(id=self.request.user.userextend.customer.id)
 
 
